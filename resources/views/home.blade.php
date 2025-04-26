@@ -25,7 +25,7 @@
                             </div>
                             <div>
                                 <h3 class="fs-4 fw-bold mb-0 text-gradient">500+</h3>
-                                <p class="body-small text-secondary mb-0">Anggota Aktif</p>
+                                <p class="body-small text-secondary mb-0">Anggota Aktiff</p>
                             </div>
                         </div>
                     </div>
