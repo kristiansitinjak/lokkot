@@ -12,19 +12,19 @@ return new class extends Migration
      * @return void
      */
     public function up()
-{
-    Schema::create('local_users', function (Blueprint $table) {
-        $table->id();
-        $table->string('username')->unique();
-        $table->string('nama')->nullable();
-        $table->string('nim')->nullable();
-        $table->string('angkatan')->nullable();
-        $table->string('prodi')->nullable();
-        $table->string('role')->nullable(); 
-        $table->timestamps();
-    });
-}
-
+    {
+        Schema::create('local_users', function (Blueprint $table) {
+            $table->id();
+            $table->string('username')->unique();
+            $table->string('nama')->nullable();
+            $table->string('nim')->nullable();
+            $table->string('angkatan')->nullable();
+            $table->string('prodi')->nullable();
+            $table->string('role')->nullable();
+            $table->string('masa_jabatan')->nullable()->unique(); // ← masa_jabatan diatur nullable & unique
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

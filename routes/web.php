@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminRoleController;
 use App\Http\Controllers\AdminMahasiswaController;
-use App\Http\Controllers\ProgramKerjaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,10 +40,6 @@ Route::middleware(['auth.admin'])->group(function () {
 });
 
 Route::middleware('auth.custom')->group(function () {
-Route::get('/admin/kas', [AdminMahasiswaController::class, 'index'])->name('admin.kas.index');
-Route::post('/admin/kas', [AdminMahasiswaController::class, 'store'])->name('admin.kas.store');
-});
-
-Route::middleware('auth.custom')->group(function () {
-Route::resource('proker', ProgramKerjaController::class);
+    Route::get('/admin/kas', [AdminMahasiswaController::class, 'index'])->name('admin.kas.index');
+    Route::post('/admin/kas', [AdminMahasiswaController::class, 'store'])->name('admin.kas.store');
 });

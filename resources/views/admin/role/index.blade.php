@@ -27,12 +27,17 @@
 
                         <div class="form-group">
                             <label for="role">Pilih Role</label>
-                            <select name="role" class="form-control" id="role" required>
+                            <select name="role" class="form-control" id="role" required onchange="toggleMasaJabatan()">
                                 <option value="mahasiswa">Mahasiswa</option>
                                 <option value="admin">Admin</option>
                                 <option value="kaprodi">Kaprodi</option>
                                 <option value="bendahara">Bendahara</option>
                             </select>
+                        </div>
+
+                        <div class="form-group" id="masa_jabatan_group" style="display: none;">
+                            <label for="masa_jabatan">Masa Jabatan</label>
+                            <input type="text" class="form-control" id="masa_jabatan" name="masa_jabatan" placeholder="Contoh: 2024-2025">
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block">Simpan Role</button>
@@ -45,7 +50,7 @@
         <div class="col-lg-7 mb-4">
             <div class="card shadow">
                 <div class="card-header border-bottom">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Akun </h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Daftar Akun</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -78,5 +83,22 @@
     </div>
 
 </div>
+
+<script>
+    function toggleMasaJabatan() {
+        var role = document.getElementById('role').value;
+        var masaJabatanGroup = document.getElementById('masa_jabatan_group');
+        var masaJabatanInput = document.getElementById('masa_jabatan');
+
+        if (role === 'admin' || role === 'kaprodi' || role === 'bendahara') {
+            masaJabatanGroup.style.display = 'block';
+            masaJabatanInput.required = true;
+        } else {
+            masaJabatanGroup.style.display = 'none';
+            masaJabatanInput.required = false;
+            masaJabatanInput.value = ''; // kosongkan kalau disembunyikan
+        }
+    }
+</script>
 
 @endsection
