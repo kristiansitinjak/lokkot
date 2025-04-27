@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Edit Program Kerja</h1>
 
-    <form action="{{ route('proker.update', $proker->id) }}" method="POST">
+    <form action="{{ route('proker.update', $proker) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
