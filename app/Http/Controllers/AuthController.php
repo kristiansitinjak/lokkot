@@ -74,9 +74,10 @@ class AuthController extends Controller
                                 session([
                                     'token' => $token,
                                     'user' => array_merge($user, [
-                                        'nama'  => $nama,
-                                        'prodi' => $prodi,
-                                        'role'  => $role
+                                        'nama'         => $nama,
+                                        'prodi'        => $prodi,
+                                        'role'         => $role,
+                                        'masa_jabatan' => $localUser->masa_jabatan // tambahkan ini
                                     ])
                                 ]);
 

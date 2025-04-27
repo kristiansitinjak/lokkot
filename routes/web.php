@@ -43,3 +43,10 @@ Route::middleware('auth.custom')->group(function () {
     Route::get('/admin/kas', [AdminMahasiswaController::class, 'index'])->name('admin.kas.index');
     Route::post('/admin/kas', [AdminMahasiswaController::class, 'store'])->name('admin.kas.store');
 });
+
+
+use App\Http\Controllers\ProkerController;
+
+Route::middleware(['auth.custom'])->group(function () {
+    Route::resource('proker', ProkerController::class);
+});

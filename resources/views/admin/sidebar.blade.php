@@ -90,11 +90,20 @@
             </div>
         </div>
     </li>
+
     <!-- Nav Item - Role -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.role.index') }}">
             <i class="fas fa-fw fa-users-cog"></i>
             <span>Role</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Program Kerja -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('proker.index') }}">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Program Kerja</span>
         </a>
     </li>
 
