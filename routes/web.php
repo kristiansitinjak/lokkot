@@ -47,6 +47,18 @@ Route::middleware('auth.custom')->group(function () {
 
 use App\Http\Controllers\ProkerController;
 
+// Semua yang login boleh lihat daftar Program Kerja
 Route::middleware(['auth.custom'])->group(function () {
-    Route::resource('proker', ProkerController::class);
+    Route::get('proker', [ProkerController::class, 'index'])->name('proker.index');
+    Route::get('proker/{id}', [ProkerController::class, 'show'])->name('proker.show');
 });
+
+// Hanya admin yang bisa create, edit, delete
+Route::middleware(['auth.custom', 'isAdmin'])->group(function () {
+    Route::get('proker/create', [ProkerController::class, 'create'])->name('proker.create');
+    Route::post('proker', [ProkerController::class, 'store'])->name('proker.store');
+    Route::get('proker/{id}/edit', [ProkerController::class, 'edit'])->name('proker.edit');
+    Route::put('proker/{id}', [ProkerController::class, 'update'])->name('proker.update');
+    Route::delete('proker/{id}', [ProkerController::class, 'destroy'])->name('proker.destroy');
+});
+
