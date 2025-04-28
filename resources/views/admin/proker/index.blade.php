@@ -4,6 +4,7 @@
 <div class="container">
     <h1>Daftar Program Kerja</h1>
     <a href="{{ route('proker.create') }}" class="btn btn-primary mb-3">Tambah Proker</a>
+    <a href="{{ route('proker.history') }}" class="btn btn-info mb-3">Riwayat Proker</a>
 
     @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>

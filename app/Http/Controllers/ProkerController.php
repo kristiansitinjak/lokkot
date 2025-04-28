@@ -18,7 +18,8 @@ class ProkerController extends Controller
 
     public function tampilUmum()
     {
-        $prokers = Proker::all(); // Ambil semua proker tanpa filter
+        $maxMasaJabatan = Proker::max('masa_jabatan');
+        $prokers = Proker::where('masa_jabatan', $maxMasaJabatan)->get();
         return view('proker', compact('prokers'));
     }
 
@@ -94,5 +95,16 @@ class ProkerController extends Controller
     {
         $proker->delete();
         return redirect()->route('proker.index')->with('success', 'Program Kerja berhasil dihapus.');
+    }
+
+    public function history(Request $request)
+    {
+        $masaJabatans = \App\Models\LocalUser::whereNotNull('masa_jabatan')->pluck('masa_jabatan')->unique();
+        $selectedMasaJabatan = $request->query('masa_jabatan');
+        $prokers = collect();
+        if ($selectedMasaJabatan) {
+            $prokers = \App\Models\Proker::where('masa_jabatan', $selectedMasaJabatan)->get();
+        }
+        return view('admin.proker.history', compact('prokers', 'masaJabatans'));
     }
 }

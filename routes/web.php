@@ -53,6 +53,7 @@ Route::get('/proker-umum', [ProkerController::class, 'tampilUmum'])->name('proke
 // Semua yang login boleh lihat daftar Program Kerja (khusus admin)
 Route::middleware(['auth.custom'])->group(function () {
     Route::get('proker', [ProkerController::class, 'index'])->name('proker.index');
+    Route::get('proker/history', [ProkerController::class, 'history'])->name('proker.history');
 });
 
 // Hanya admin yang bisa create, edit, delete
