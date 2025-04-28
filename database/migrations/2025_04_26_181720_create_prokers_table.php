@@ -11,13 +11,18 @@ class CreateProkersTable extends Migration
         Schema::create('prokers', function (Blueprint $table) {
             $table->id();
             $table->string('perihal');
+            $table->string('deskripsi');
+            $table->string('tujuan');
+            $table->string('lokasi');
             $table->date('rencana_tanggal');
             $table->date('realisasi_tanggal')->nullable();
+            $table->string('sumber_dana');
             $table->bigInteger('rencana_biaya');
             $table->bigInteger('realisasi_biaya')->nullable();
             $table->string('status')->default('Belum Dilaksanakan');
             $table->string('masa_jabatan'); // username admin
             $table->timestamps();
+
         });
     }
 

@@ -47,7 +47,10 @@ Route::middleware('auth.custom')->group(function () {
 
 use App\Http\Controllers\ProkerController;
 
-// Semua yang login boleh lihat daftar Program Kerja
+// Halaman umum: Semua orang (tanpa login) bisa lihat Program Kerja
+Route::get('/proker-umum', [ProkerController::class, 'tampilUmum'])->name('proker.umum');
+
+// Semua yang login boleh lihat daftar Program Kerja (khusus admin)
 Route::middleware(['auth.custom'])->group(function () {
     Route::get('proker', [ProkerController::class, 'index'])->name('proker.index');
 });
@@ -60,4 +63,5 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::put('proker/{proker}', [ProkerController::class, 'update'])->name('proker.update');
     Route::delete('proker/{proker}', [ProkerController::class, 'destroy'])->name('proker.destroy');
 });
+
 

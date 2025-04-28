@@ -62,7 +62,7 @@
                     <li class="nav-item mx-2"><a class="nav-link" href="#">Berita</a></li>
                     <li class="nav-item mx-2"><a class="nav-link" href="#">Keuangan</a></li>
                     <li class="nav-item mx-2"><a class="nav-link" href="#">Visi Misi</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link" href="#">Program Kerja</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="{{ route('proker.umum') }}">Program Kerja</a></li>
                     <li class="nav-item mx-2"><a class="nav-link" href="#">STRUKTUR ORGANISASI</a></li>
                 </ul>
             </div>

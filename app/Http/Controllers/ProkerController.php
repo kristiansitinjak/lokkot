@@ -16,6 +16,13 @@ class ProkerController extends Controller
         return view('admin.proker.index', compact('prokers'));
     }
 
+    public function tampilUmum()
+    {
+        $prokers = Proker::all(); // Ambil semua proker tanpa filter
+        return view('proker', compact('prokers'));
+    }
+
+
     public function create()
     {
         return view('admin.proker.create');
@@ -24,23 +31,34 @@ class ProkerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'perihal' => 'required',
+            'perihal' => 'required|string',
+            'deskripsi' => 'required|string',
+            'tujuan' => 'required|string',
+            'lokasi' => 'required|string',
             'rencana_tanggal' => 'required|date',
+            'realisasi_tanggal' => 'nullable|date',
+            'sumber_dana' => 'required|string',
             'rencana_biaya' => 'required|integer',
-            'status' => 'required'
+            'realisasi_biaya' => 'nullable|integer',
+            'status' => 'required|string'
+
         ]);
 
         $user = session('user');
 
         Proker::create([
             'perihal' => $request->perihal,
+            'deskripsi' => $request->deskripsi,
+            'tujuan' => $request->tujuan,
+            'lokasi' => $request->lokasi,
             'rencana_tanggal' => $request->rencana_tanggal,
             'realisasi_tanggal' => $request->realisasi_tanggal,
+            'sumber_dana' => $request->sumber_dana,
             'rencana_biaya' => $request->rencana_biaya,
             'realisasi_biaya' => $request->realisasi_biaya,
             'status' => $request->status,
-            'username_role_admin' => $user['username'],
-            'masa_jabatan' => $user['masa_jabatan'] // tambahkan ini
+            'masa_jabatan' => $user['masa_jabatan'],
+
         ]);
 
         return redirect()->route('proker.index')->with('success', 'Program Kerja berhasil ditambahkan.');
@@ -54,10 +72,17 @@ class ProkerController extends Controller
     public function update(Request $request, Proker $proker)
     {
         $request->validate([
-            'perihal' => 'required',
+            'perihal' => 'required|string',
+            'deskripsi' => 'required|string',
+            'tujuan' => 'required|string',
+            'lokasi' => 'required|string',
             'rencana_tanggal' => 'required|date',
+            'realisasi_tanggal' => 'nullable|date',
+            'sumber_dana' => 'required|string',
             'rencana_biaya' => 'required|integer',
-            'status' => 'required'
+            'realisasi_biaya' => 'nullable|integer',
+            'status' => 'required|string'
+
         ]);
 
         $proker->update($request->all());

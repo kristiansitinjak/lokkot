@@ -11,12 +11,17 @@ class Proker extends Model
 
     protected $fillable = [
         'perihal',
+        'deskripsi',
+        'tujuan',
+        'lokasi',
         'rencana_tanggal',
         'realisasi_tanggal',
+        'sumber_dana',
         'rencana_biaya',
         'realisasi_biaya',
         'status',
         'masa_jabatan',
+
     ];
 
     public function localUser()
