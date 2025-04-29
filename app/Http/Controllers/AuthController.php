@@ -77,7 +77,7 @@ class AuthController extends Controller
                                         'nama'         => $nama,
                                         'prodi'        => $prodi,
                                         'role'         => $role,
-                                        'masa_jabatan' => $localUser->masa_jabatan // tambahkan ini
+                                        'period' => $localUser->period // tambahkan ini
                                     ])
                                 ]);
 

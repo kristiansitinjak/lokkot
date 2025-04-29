@@ -18,7 +18,7 @@ class AdminRoleController extends Controller
         $request->validate([
             'username' => 'required|string',
             'role' => 'required|string|in:admin,kaprodi,bendahara,mahasiswa',
-            'masa_jabatan' => 'required_if:role,admin,kaprodi,bendahara|nullable|string',
+            'period' => 'required_if:role,admin,kaprodi,bendahara|nullable|string',
         ]);
 
         $user = LocalUser::firstOrCreate(
@@ -30,9 +30,9 @@ class AdminRoleController extends Controller
 
         // Cek jika role admin, kaprodi, bendahara, maka isi masa_jabatan
         if (in_array($request->role, ['admin', 'kaprodi', 'bendahara'])) {
-            $user->masa_jabatan = $request->masa_jabatan;
+            $user->period = $request->period;
         } else {
-            $user->masa_jabatan = null; // untuk mahasiswa biasa
+            $user->period = null; // untuk mahasiswa biasa
         }
 
         $user->save();

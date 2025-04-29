@@ -101,7 +101,7 @@
 
     <!-- Nav Item - Program Kerja -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('proker.index') }}">
+        <a class="nav-link" href="{{ route('workprogram.index') }}">
             <i class="fas fa-fw fa-tasks"></i>
             <span>Program Kerja</span>
         </a>

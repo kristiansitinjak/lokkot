@@ -45,24 +45,25 @@ Route::middleware('auth.custom')->group(function () {
 });
 
 
-use App\Http\Controllers\ProkerController;
+use App\Http\Controllers\WorkprogramController;
 
-// Halaman umum: Semua orang (tanpa login) bisa lihat Program Kerja
-Route::get('/proker-umum', [ProkerController::class, 'tampilUmum'])->name('proker.umum');
+// Public page: Everyone (without login) can view Work Programs
+Route::get('/public-work-programs', [WorkprogramController::class, 'showPublic'])->name('workprogram.public');
 
-// Semua yang login boleh lihat daftar Program Kerja (khusus admin)
+// Logged-in users can view the list of Work Programs (for admin only)
 Route::middleware(['auth.custom'])->group(function () {
-    Route::get('proker', [ProkerController::class, 'index'])->name('proker.index');
-    Route::get('proker/history', [ProkerController::class, 'history'])->name('proker.history');
+    Route::get('workprogram', [WorkprogramController::class, 'index'])->name('workprogram.index');
+    Route::get('workprogram/history', [WorkprogramController::class, 'history'])->name('workprogram.history');
 });
 
-// Hanya admin yang bisa create, edit, delete
+// Only admins can create, edit, and delete
 Route::middleware(['auth.custom'])->group(function () {
-    Route::get('proker/create', [ProkerController::class, 'create'])->name('proker.create');
-    Route::post('proker', [ProkerController::class, 'store'])->name('proker.store');
-    Route::get('proker/{proker}/edit', [ProkerController::class, 'edit'])->name('proker.edit');
-    Route::put('proker/{proker}', [ProkerController::class, 'update'])->name('proker.update');
-    Route::delete('proker/{proker}', [ProkerController::class, 'destroy'])->name('proker.destroy');
+    Route::get('workprogram/create', [WorkprogramController::class, 'create'])->name('workprogram.create');
+    Route::post('workprogram', [WorkprogramController::class, 'store'])->name('workprogram.store');
+    Route::get('workprogram/{workprogram}/edit', [WorkprogramController::class, 'edit'])->name('workprogram.edit');
+    Route::put('workprogram/{workprogram}', [WorkprogramController::class, 'update'])->name('workprogram.update');
+    Route::delete('workprogram/{workprogram}', [WorkprogramController::class, 'destroy'])->name('workprogram.destroy');
 });
+
 
 

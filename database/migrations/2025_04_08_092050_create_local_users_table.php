@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('angkatan')->nullable();
             $table->string('prodi')->nullable();
             $table->string('role')->nullable();
-            $table->string('masa_jabatan')->nullable()->unique(); // ← masa_jabatan diatur nullable & unique
+            $table->string('period')->nullable()->unique(); // ← masa_jabatan diatur nullable & unique
             $table->timestamps();
         });
     }
